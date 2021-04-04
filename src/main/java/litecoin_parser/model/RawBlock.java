@@ -1,4 +1,4 @@
-package litecoin_parser.model.block;
+package litecoin_parser.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Accessors(chain = true)
-public class DecodedRawBlock {
+public class RawBlock {
 
     @JsonProperty("hash")
     private String hash;
@@ -38,7 +38,7 @@ public class DecodedRawBlock {
     private String merkleRoot;
 
     @JsonProperty("tx")
-    private List<String> transactions;
+    private List<RawTransaction> transactions;
 
     @JsonProperty("time")
     private Integer time;
@@ -47,7 +47,7 @@ public class DecodedRawBlock {
     private Integer medianTime;
 
     @JsonProperty("nonce")
-    private Integer nonce;
+    private Long nonce;
 
     @JsonProperty("bits")
     private String bits;

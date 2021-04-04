@@ -1,4 +1,4 @@
-package litecoin_parser.model.transaction;
+package litecoin_parser.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

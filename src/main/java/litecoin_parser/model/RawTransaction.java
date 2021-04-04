@@ -1,4 +1,4 @@
-package litecoin_parser.model.transaction;
+package litecoin_parser.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Accessors(chain = true)
-public class DecodedRawTransaction {
+public class RawTransaction {
 
     @JsonProperty("txid")
     private String id;
