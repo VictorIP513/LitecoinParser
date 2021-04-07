@@ -3,8 +3,15 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
     <persistence-unit name="litecoin_parser">
+        <class>litecoin_parser.database.Address</class>
         <class>litecoin_parser.database.Block</class>
+        <class>litecoin_parser.database.Error</class>
         <class>litecoin_parser.database.Transaction</class>
+        <class>litecoin_parser.database.TxCoinbaseInput</class>
+        <class>litecoin_parser.database.TxInput</class>
+        <class>litecoin_parser.database.TxInputWitness</class>
+        <class>litecoin_parser.database.TxOutAddress</class>
+        <class>litecoin_parser.database.TxOutput</class>
 
         <properties>
             <property name="javax.persistence.provider" value="org.hibernate.jpa.HibernatePersistenceProvider"/>

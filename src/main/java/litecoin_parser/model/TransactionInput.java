@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Data
 @Accessors(chain = true)
 public class TransactionInput {
@@ -16,6 +18,12 @@ public class TransactionInput {
 
     @JsonProperty("scriptSig")
     private ScriptSig scriptSig;
+
+    @JsonProperty("coinbase")
+    private String coinbase;
+
+    @JsonProperty("txinwitness")
+    private List<String> witness;
 
     @JsonProperty("sequence")
     private Long sequenceNumber;
