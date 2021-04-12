@@ -37,5 +37,5 @@ public class Transaction {
     private Integer weight;
 
     @Column(name = "LOCK_TIME", nullable = false)
-    private Integer lockTime;
+    private Long lockTime;
 }

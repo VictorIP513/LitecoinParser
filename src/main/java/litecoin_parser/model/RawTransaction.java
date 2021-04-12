@@ -29,7 +29,7 @@ public class RawTransaction {
     private Integer weight;
 
     @JsonProperty("locktime")
-    private Integer lockTime;
+    private Long lockTime;
 
     @JsonProperty("vin")
     private List<TransactionInput> inputs;
