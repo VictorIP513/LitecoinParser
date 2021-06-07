@@ -62,6 +62,23 @@ public class DatabaseService {
         entityManager.getTransaction().commit();
     }
 
+    public void updateInputAmountInformation(@Nonnull String transactionId,
+                                             @Nonnull String transactionInputId,
+                                             int vout,
+                                             double amount) {
+        entityManager.getTransaction().begin();
+
+        Query query = entityManager.createNativeQuery("UPDATE LTC$TX_INPUTS SET IN_VALUE = :amount " +
+                "WHERE TX_ID = :transactionId AND TX_INPUT_ID = :transactionInputId AND VOUT = :vout");
+        query.setParameter("amount", amount);
+        query.setParameter("transactionId", transactionId);
+        query.setParameter("transactionInputId", transactionInputId);
+        query.setParameter("vout", vout);
+        query.executeUpdate();
+
+        entityManager.getTransaction().commit();
+    }
+
     private void saveTransactionInput(@Nonnull TransactionInput transactionInput, @Nonnull String transactionId) {
         if (nonNull(transactionInput.getCoinbase())) {
             TxCoinbaseInput txCoinbaseInput = messageMapper.mapTransactionCoinbaseInputToDatabase(

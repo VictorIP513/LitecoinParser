@@ -25,6 +25,10 @@ public class MessageMapper {
         return objectMapper.readValue(json, RawBlock.class);
     }
 
+    public RawTransaction parseRawTransactionJson(@Nonnull String json) throws JsonProcessingException {
+        return objectMapper.readValue(json, RawTransaction.class);
+    }
+
     @Nonnull
     public Block mapRawBlockToDatabase(@Nonnull RawBlock rawBlock) {
         return new Block()

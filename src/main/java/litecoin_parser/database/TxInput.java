@@ -28,4 +28,7 @@ public class TxInput extends TxInputId {
 
     @Column(name = "SEQUENCE_NUMBER", nullable = false)
     private Long sequenceNumber;
+
+    @Column(name = "OUT_VALUE")
+    private Double inValue;
 }
