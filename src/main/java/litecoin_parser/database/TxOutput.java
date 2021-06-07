@@ -34,4 +34,7 @@ public class TxOutput extends TxOutputId {
 
     @Column(name = "SCRIPT_TYPE", nullable = false)
     private String scriptType;
+
+    @Column(name = "IS_SPENT")
+    private Boolean isSpent;
 }
