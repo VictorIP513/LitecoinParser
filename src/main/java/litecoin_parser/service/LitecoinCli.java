@@ -15,7 +15,6 @@ public class LitecoinCli {
     private static final String GET_BLOCK_COMMAND = "getblock";
     private static final String GET_TX_OUT_COMMAND = "gettxout";
     private static final String GET_RAW_TRANSACTION_COMMAND = "getrawtransaction";
-    private static final String DECODE_RAW_TRANSACTION_COMMAND = "decoderawtransaction";
     private static final String FULL_BLOCK_INFORMATION_MODE = "2";
 
     private static final String LITECOIN_CLI_PATH = ApplicationProperties.getProperty("litecoin_cli_path");
@@ -58,19 +57,6 @@ public class LitecoinCli {
                 RPC_PASSWORD_ARGUMENT + RPC_PASSWORD,
                 GET_RAW_TRANSACTION_COMMAND,
                 transactionId
-        };
-
-        return executeLitecoinCliProcess(commands);
-    }
-
-    @Nonnull
-    public String decodeRawTransaction(@Nonnull String hexTransaction) throws IOException {
-        String[] commands = {
-                LITECOIN_CLI_PATH,
-                RPC_USER_ARGUMENT + RPC_USER,
-                RPC_PASSWORD_ARGUMENT + RPC_PASSWORD,
-                DECODE_RAW_TRANSACTION_COMMAND,
-                hexTransaction
         };
 
         return executeLitecoinCliProcess(commands);

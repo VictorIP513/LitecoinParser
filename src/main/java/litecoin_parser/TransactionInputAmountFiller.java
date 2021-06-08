@@ -7,6 +7,10 @@ import litecoin_parser.service.DatabaseService;
 import litecoin_parser.service.LitecoinCli;
 import litecoin_parser.service.MessageMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.bitcoinj.core.Transaction;
+import org.bitcoinj.core.TransactionOutput;
+import org.bitcoinj.core.Utils;
+import org.bitcoinj.params.TestNet3Params;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
@@ -46,10 +50,13 @@ public class TransactionInputAmountFiller {
                 }
 
                 String hexInputTransaction = litecoinCli.getRawTransaction(transactionInput.getTransactionId());
-                String inputTransactionJson = litecoinCli.decodeRawTransaction(hexInputTransaction);
-                RawTransaction inputRawTransaction = messageMapper.parseRawTransactionJson(inputTransactionJson);
+                byte[] rawTransactionBytes = Utils.HEX.decode(hexInputTransaction);
 
-                double amount = inputRawTransaction.getOutputs().get(transactionInput.getVout()).getValue();
+                // get input amount with bitcoinj
+                Transaction bitcoinjInputTransaction = new Transaction(TestNet3Params.get(), rawTransactionBytes);
+                TransactionOutput transactionOutput = bitcoinjInputTransaction.getOutput(transactionInput.getVout());
+                double amount = Double.parseDouble(transactionOutput.getValue().toPlainString());
+
                 databaseService.updateInputAmountInformation(transactionId, transactionInput.getTransactionId(),
                         transactionInput.getVout(), amount);
             }
